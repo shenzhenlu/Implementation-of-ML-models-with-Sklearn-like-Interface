@@ -21,3 +21,4 @@ The data consists of 28,709 48x48 pixel grayscale images of faces. The faces hav
   * ANN with 0 Hidden Layer (Logistic Regression)
   * ANN with 1 Hidden Layer
   * ANN with >1 Hidden Layer (Tensorflow)
+  * CNN (Tensorflow)
