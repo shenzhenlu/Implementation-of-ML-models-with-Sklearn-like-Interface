@@ -9,6 +9,11 @@ def init_weight_and_bias(M1, M2):
     return W.astype(np.float32), b.astype(np.float32)
 
 
+def init_filter(shape):
+    """ Initializes the couvolution filter with Glorot normal initializer."""
+    w = np.random.randn(*shape) * np.sqrt(2.0 / np.prod(shape[:-1]))
+    return w.astype(np.float32)
+
 def relu(x):
     return x * (x > 0)
 
@@ -79,6 +84,13 @@ def get_data(balance_ones=True, N_test=1000):
         
     return X_train, y_train, X_val, y_val 
 
+def get_image_data():
+    X_train, y_train, X_val, y_val = get_data()
+    N, D = X_train.shape
+    d = int(np.sqrt(D))
+    X_train = X_train.reshape(-1, d, d, 1)
+    X_val = X_val.reshape(-1, d, d, 1)
+    return X_train, y_train, X_val, y_val
 
 def get_binary_data(balance_ones=True, N_test=1000):
     y = []
